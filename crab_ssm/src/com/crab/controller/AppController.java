@@ -80,7 +80,7 @@ public class AppController
 		return model;
 	}
 	
-	@RequestMapping(value = "logout", method = RequestMethod.GET)
+	@RequestMapping(value = "background/logout", method = RequestMethod.GET)
 	public ModelAndView logout()
 	{
 		ModelAndView model = new ModelAndView();

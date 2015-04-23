@@ -11,7 +11,7 @@ public class SpringInitializer extends AbstractAnnotationConfigDispatcherServlet
 	protected Class<?>[] getRootConfigClasses()
 	{
 		logger.info("================================================== init ");
-		return new Class[] { ApplicationContext.class, ApplicationContext_webmvc.class };
+		return new Class[] { ApplicationContext.class, ApplicationContext_webmvc.class ,SpringSecurity.class};
 	}
 
 	@Override
