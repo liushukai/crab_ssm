@@ -45,10 +45,10 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter
 		 *	</http>
 		 *	http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().and().httpBasic();
 		 */
-		http.formLogin().defaultSuccessUrl("", true);
+		//http.formLogin().defaultSuccessUrl("", true);
 		http.authorizeRequests()                                                                
-			.antMatchers("/background/**").hasRole("ADMIN")                                      
-			.anyRequest().authenticated()               
+			.antMatchers("/background/**").hasRole("ADMIN")                                
+			//.anyRequest().authenticated()               
 			.and().formLogin().loginPage("/login").permitAll();
 		// 设置拦截规则
 		// 自定义accessDecisionManager访问控制器,并开启表达式语言

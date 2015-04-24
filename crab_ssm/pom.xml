@@ -123,6 +123,11 @@
 			<version>4.1.6.RELEASE</version>
 			<type>pom</type>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>ssm</finalName>
