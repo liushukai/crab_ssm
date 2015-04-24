@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.event.LoggerListener;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,7 +12,9 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-//@Configuration
+import com.crab.service.UserService;
+
+@Configuration
 @EnableWebSecurity
 public class SpringSecurity extends WebSecurityConfigurerAdapter
 {
@@ -23,6 +26,7 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception
 	{
 		auth.inMemoryAuthentication().withUser("admin").password("admin").roles("USER");
+		
 	}
 
 	@Override
@@ -47,7 +51,7 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter
 		 */
 		//http.formLogin().defaultSuccessUrl("", true);
 		http.authorizeRequests()                                                                
-			.antMatchers("/background/**").hasRole("ADMIN")                                
+			.antMatchers("/background/**").authenticated()                              
 			//.anyRequest().authenticated()               
 			.and().formLogin().loginPage("/login").permitAll();
 		// 设置拦截规则
@@ -68,15 +72,13 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter
 
 	}
 
+	@Autowired
+	private UserService userService;
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception
 	{
-		auth.inMemoryAuthentication().withUser("liusk").password("liusk").roles("ADMIN");
-		// auth.inMemoryAuthentication().
-		// 自定义UserDetailsService
-		// auth.userDetailsService(userDetailsService()).passwordEncoder(new
-		// Md5PasswordEncoder());
-
+		auth.userDetailsService(userService);
 	}
 
 	@Bean
