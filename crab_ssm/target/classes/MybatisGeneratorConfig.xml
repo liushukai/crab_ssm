@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+	<!-- 填写jdbc驱动路径 -->
+	<classPathEntry
+		location="C:\Users\0\.m2\repository\mysql\mysql-connector-java\5.1.34\mysql-connector-java-5.1.34.jar" />
+
+	<context id="mysqlTables" targetRuntime="MyBatis3">
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/ssm3" userId="root"
+			password="">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<javaModelGenerator targetPackage="com.crab.entity"
+			targetProject="crab_ssm\src">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="com.crab.entity"
+			targetProject="crab_ssm\src">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.crab.dao" targetProject="crab_ssm\src">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		
+		<!-- 生成表 -->
+		<table tableName="t_user" schema="ssm3" domainObjectName="User"></table>
+		<table tableName="t_role" schema="ssm3" domainObjectName="Role"></table>
+		<table tableName="t_resources" schema="ssm3" domainObjectName="Resources"></table>
+	</context>
+</generatorConfiguration>
