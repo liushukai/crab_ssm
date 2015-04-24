@@ -16,6 +16,8 @@
 		<!-- SQL Mapper 
 		<mapper resource="com/crab/entity/*.xml" />-->												
 		<mapper resource="com/crab/entity/UserMapper.xml"/>
+		<mapper resource="com/crab/entity/RoleMapper.xml"/>
+		<mapper resource="com/crab/entity/ResourceMapper.xml"/>
 	</mappers>
 
 </configuration>

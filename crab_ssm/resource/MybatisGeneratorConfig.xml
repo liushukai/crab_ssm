@@ -12,7 +12,8 @@
 	<context id="mysqlTables" targetRuntime="MyBatis3">
 
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://localhost:3306/ssm3" userId="root"
+			connectionURL="jdbc:mysql://localhost:3306/ssm3" 
+			userId="root"
 			password="">
 		</jdbcConnection>
 
@@ -20,25 +21,25 @@
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
 
-		<javaModelGenerator targetPackage="com.crab.entity"
-			targetProject="crab_ssm\src">
+		<javaModelGenerator targetPackage="com.crab.entity" targetProject="crab_ssm\src">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 
-		<sqlMapGenerator targetPackage="com.crab.entity"
-			targetProject="crab_ssm\src">
+		<sqlMapGenerator targetPackage="com.crab.entity" targetProject="crab_ssm\src">
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
 
-		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="com.crab.dao" targetProject="crab_ssm\src">
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.crab.dao" targetProject="crab_ssm\src">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 		
-		<!-- 生成表 -->
+		<!-- 生成表 
 		<table tableName="t_user" schema="ssm3" domainObjectName="User"></table>
 		<table tableName="t_role" schema="ssm3" domainObjectName="Role"></table>
-		<table tableName="t_resources" schema="ssm3" domainObjectName="Resources"></table>
+		<table tableName="t_resource" schema="ssm3" domainObjectName="Resource"></table>-->
+		
+		<table tableName="t_user_role" schema="ssm3" domainObjectName="UserRoleLink"></table>
+		<table tableName="t_resource_role" schema="ssm3" domainObjectName="ResourceRoleLink"></table>
 	</context>
 </generatorConfiguration>
